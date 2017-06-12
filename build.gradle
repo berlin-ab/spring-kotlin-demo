@@ -1,34 +1,38 @@
-//
-// Requires dependency to GraphViz
-//
-task dependenciesGraphDot {
-    mustRunAfter "clean"
-    def graphBuildDir = "build/dependenciesGraph"
-    def dotFile = file "$graphBuildDir/graph.dot"
+class DependencyGraphPlugin implements Plugin<Project> {
+    void apply(Project project) {
+        project.task("generate-dependency-graph-dot") {
+            mustRunAfter "clean"
+            def graphBuildDir = "build/dependency-graph"
+            def dotFile = project.file "$graphBuildDir/dependencies.dot"
 
-    doLast {
-        delete graphBuildDir
-        mkdir graphBuildDir
-        dotFile << "digraph dependencies {\n"
-        project.subprojects.forEach {
-            Project subProject -> try {
-                Configuration compileConfig = subProject.configurations["compile"]
-                compileConfig .dependencies .grep {
-                    it.respondsTo("getDependencyProject")
-                } .forEach {
-                    dotFile << """ "$subProject.name" -> "$it.dependencyProject.name"\n"""
+            doLast {
+                project.delete graphBuildDir
+                project.mkdir graphBuildDir
+                dotFile << "digraph dependencies {\n"
+                project.subprojects.forEach {
+                    Project subProject -> try {
+                        Configuration compileConfig = subProject.configurations["compile"]
+                        compileConfig .dependencies .grep {
+                            it.respondsTo("getDependencyProject")
+                        } .forEach {
+                            dotFile << """ "$subProject.name" -> "$it.dependencyProject.name"\n"""
+                        }
+                    } catch (UnknownConfigurationException ignored) { }
                 }
-            } catch (UnknownConfigurationException ignored) { }
+                dotFile << "}\n"
+            }
         }
-        dotFile << "}\n"
+
+        project.task("dependencies-graph", type: Exec, dependsOn: "generate-dependency-graph-dot") {
+            workingDir "$project.buildDir/dependency-graph"
+            commandLine "dot", "-o", "graph.png", "-Tpng", "dependencies.dot"
+        }
+
+        project.task("clean", type: Delete) {
+            project.delete "build"
+        }
     }
 }
 
-task dependenciesGraph(dependsOn: "dependenciesGraphDot", type: Exec) {
-    workingDir "$project.buildDir/dependenciesGraph"
-    commandLine "dot", "-O", "-Tpng", "graph.dot"
-}
+apply plugin: DependencyGraphPlugin
 
-task clean(type: Delete) {
-    delete "build"
-}
