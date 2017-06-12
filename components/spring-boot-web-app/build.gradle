@@ -20,13 +20,14 @@ apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
 
 sourceSets {
 	main.kotlin.srcDirs += "src"
 	test.kotlin.srcDirs += "test"
 }
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
 
 compileKotlin {
 	kotlinOptions.jvmTarget = "1.8"
@@ -39,12 +40,12 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile(project(":components/api"))
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
