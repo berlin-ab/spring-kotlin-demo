@@ -5,7 +5,7 @@ data class Post(
         val body: String
 )
 
-open class LatestPosts {
+class LatestPosts {
     fun fetch() : List<Post> {
         return listOf(
                 Post(
