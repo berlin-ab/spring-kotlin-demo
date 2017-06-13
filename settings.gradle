@@ -1,3 +1,4 @@
 include 'components/blog'
 include 'components/api'
+include 'components/interesting'
 include 'components/spring-boot-web-app'
