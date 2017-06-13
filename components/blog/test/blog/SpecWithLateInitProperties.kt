@@ -16,10 +16,10 @@ class Foo {
 
 
 @RunWith(JUnitPlatform::class)
-class BlogSpec : Spek(object {
+class SpecWithLateInitProperties : Spek(spec = object {
     lateinit var foo: Foo
 
-    fun spec(): Spec.() -> Unit = {
+    var spec: Spec.() -> Unit = {
         beforeEachTest {
             foo = Foo()
         }
@@ -28,7 +28,7 @@ class BlogSpec : Spek(object {
             assertTrue(foo.doSomething())
         }
     }
-}.spec())
+}.spec)
 
 
 
