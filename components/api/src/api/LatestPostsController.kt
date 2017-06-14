@@ -14,8 +14,8 @@ class Response : DeferredResult<ResponseEntity<Any>>()
 
     @GetMapping("/latest-posts")
     fun get(): Response {
-        return Response().apply {
-            latestPosts.fetch(LatestPostsApiObserver(this))
+        return Response().also {
+            latestPosts.fetch(LatestPostsApiObserver(it))
         }
     }
 
