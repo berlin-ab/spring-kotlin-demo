@@ -9,4 +9,4 @@ Please leave a Github issue.
 ## Examples
 
 * The `components/interesting` directory contains some examples of Kotlin's features
-* Example of common dependencies: spring-boot-web-app -> api -> blog : (Container -> Web Component -> Domain)
+* Example of common dependencies: spring-boot-web-app -> api -> (blog) <- blog-storage : (Container -> Web Component -> Domain <- Storage Details)
