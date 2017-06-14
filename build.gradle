@@ -1,9 +1,8 @@
-import dependencyGraphPlugin.DependencyGraphPlugin
 
 buildscript {
     repositories {
         flatDir {
-            dirs 'plugins/dependency-graph-plugin/build/libs/plugins/'
+            dirs 'plugins/'
         }
     }
 
@@ -13,6 +12,5 @@ buildscript {
     }
 }
 
+import dependencyGraphPlugin.DependencyGraphPlugin
 apply plugin: DependencyGraphPlugin
-
-task("clean")
