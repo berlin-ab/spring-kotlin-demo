@@ -2,10 +2,15 @@ package blog
 
 import javax.inject.Named
 
+interface LatestPostsObserver {
+    fun latestPostsFound(posts: List<Post>)
+}
+
+
 @Named
 class LatestPosts(private val postRepository: PostRepository) {
-    fun fetch() : List<Post> {
-        return postRepository.find()
+    fun fetch(observer: LatestPostsObserver) {
+        observer.latestPostsFound(postRepository.find())
     }
 }
 
