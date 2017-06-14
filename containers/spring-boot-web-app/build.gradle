@@ -43,9 +43,10 @@ repositories {
 dependencies {
 	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
 	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
-
 	compile('org.springframework.boot:spring-boot-starter-web')
+
 	compile(project(":components/api"))
+	compile(project(":components/blog-storage"))
 
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

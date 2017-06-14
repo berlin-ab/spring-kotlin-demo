@@ -1,0 +1,3 @@
+package blogStorage
+
+interface BlogStorageApp

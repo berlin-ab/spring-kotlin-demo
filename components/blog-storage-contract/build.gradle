@@ -1,0 +1,37 @@
+buildscript {
+    ext {
+        kotlinVersion = '1.1.2-4'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+    }
+}
+
+apply plugin: 'kotlin'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main.kotlin.srcDirs += "src"
+    test.kotlin.srcDirs += "test"
+}
+
+dependencies {
+    compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
+    compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+
+    compile(project(":components/blog"))
+
+    compile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.assertj', name: 'assertj-core', version: '3.8.0'
+}

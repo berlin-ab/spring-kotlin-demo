@@ -1,6 +1,4 @@
 package blog
 
-interface BlogApp {
-
-}
+interface BlogApp
 
