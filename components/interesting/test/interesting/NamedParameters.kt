@@ -1,6 +1,6 @@
 package interesting
 
-import junit.framework.Assert.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.it
 import org.junit.platform.runner.JUnitPlatform
@@ -41,7 +41,7 @@ class NamedParametersSpec : Spek({
     it("allows for making useful objects such as a test factory") {
         val actual = TestFactory().createBlogPost()
 
-        assertEquals(actual, BlogPost(
+        assertThat(actual).isEqualTo(BlogPost(
                 name = "Kotlin is great",
                 body = "It allows for default parameters",
                 author = Author(name = "Adam Berlin")
@@ -53,7 +53,7 @@ class NamedParametersSpec : Spek({
                 name = "Even better"
         )
 
-        assertEquals(actual, BlogPost(
+        assertThat(actual).isEqualTo(BlogPost(
                 name = "Even better",
                 body = "It allows for default parameters",
                 author = Author(name = "Adam Berlin")

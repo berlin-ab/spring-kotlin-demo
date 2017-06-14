@@ -1,7 +1,7 @@
+import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.Spec
 import org.jetbrains.spek.api.dsl.it
-import org.junit.Assert.assertEquals
 import org.junit.platform.runner.JUnitPlatform
 import org.junit.runner.RunWith
 
@@ -27,11 +27,11 @@ class CollectionFilteringSpec : Spek(object {
             val someCollection = SomeCollection()
             someCollection.divisor = 2
             val even = someCollection.filter()
-            assertEquals(even, listOf(2,4,6,8))
+            assertThat(even).isEqualTo(listOf(2,4,6,8))
 
             someCollection.divisor = 3
             val triples = someCollection.filter()
-            assertEquals(triples, listOf(3,6,9))
+            assertThat(triples).isEqualTo(listOf(3,6,9))
         }
     }
 }.spec)

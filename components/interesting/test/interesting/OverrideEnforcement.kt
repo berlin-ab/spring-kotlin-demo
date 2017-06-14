@@ -1,6 +1,6 @@
 package interesting
 
-import junit.framework.Assert.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.it
 import org.junit.platform.runner.JUnitPlatform
@@ -19,6 +19,6 @@ class OverrideEnforcement : SomeInterface {
 @RunWith(JUnitPlatform::class)
 class OverrideEnforcementSpec : Spek({
     it("demonstrates") {
-        assertEquals(OverrideEnforcement().foo(), "removing this override will cause a compilation error")
+        assertThat(OverrideEnforcement().foo()).isEqualTo("removing this override will cause a compilation error")
     }
 })
