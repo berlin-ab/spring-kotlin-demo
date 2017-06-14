@@ -1,8 +1,18 @@
-apply plugin: 'groovy'
+import dependencyGraphPlugin.DependencyGraphPlugin
 
-dependencies {
-    compile gradleApi()
-    compile localGroovy()
+buildscript {
+    repositories {
+        flatDir {
+            dirs 'plugins/dependency-graph-plugin/build/libs/plugins/'
+        }
+    }
+
+
+    dependencies {
+        classpath name: 'dependency-graph-plugin-0.0.1'
+    }
 }
 
 apply plugin: DependencyGraphPlugin
+
+task("clean")

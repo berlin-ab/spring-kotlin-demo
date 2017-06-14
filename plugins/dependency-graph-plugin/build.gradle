@@ -1,0 +1,9 @@
+apply plugin: 'groovy'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
+
+group = "dependency-graph"
+version = "0.0.1"
