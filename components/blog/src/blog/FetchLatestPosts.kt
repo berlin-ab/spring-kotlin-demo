@@ -2,11 +2,6 @@ package blog
 
 import javax.inject.Named
 
-data class Post(
-        val title: String,
-        val body: String
-)
-
 @Named
 class LatestPosts {
     fun fetch() : List<Post> {
