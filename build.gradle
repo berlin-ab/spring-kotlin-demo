@@ -1,14 +1,11 @@
 
 buildscript {
     repositories {
-        flatDir {
-            dirs 'plugins/'
-        }
+        maven { url 'https://jitpack.io' }
     }
 
-
     dependencies {
-        classpath name: 'dependency-graph-plugin-0.0.1'
+        classpath("com.github.berlin-ab:gradle-dependency-graph-plugin:0.0.1")
     }
 }
 
