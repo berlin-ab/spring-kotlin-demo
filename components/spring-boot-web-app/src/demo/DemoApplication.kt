@@ -1,15 +1,15 @@
 package demo
 
 import api.ApiApp
-import blog.LatestPosts
+import blog.BlogApp
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.annotation.Bean
 
 @SpringBootApplication(
         scanBasePackageClasses = arrayOf(
                 DemoApplication::class,
-                ApiApp::class
+                ApiApp::class,
+                BlogApp::class
         )
 )
 class DemoApplication

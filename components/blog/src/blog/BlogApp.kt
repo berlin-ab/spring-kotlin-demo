@@ -1,0 +1,6 @@
+package blog
+
+interface BlogApp {
+
+}
+
