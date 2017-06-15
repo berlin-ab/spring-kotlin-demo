@@ -6,10 +6,13 @@ interface LatestPostsObserver {
     fun latestPostsFound(posts: List<Post>)
 }
 
+interface LatestPosts {
+    fun fetch(observer: LatestPostsObserver)
+}
 
 @Named
-class LatestPosts(private val postRepository: PostRepository) {
-    fun fetch(observer: LatestPostsObserver) {
+class StandardLatestPosts(private val postRepository: PostRepository) : LatestPosts {
+    override fun fetch(observer: LatestPostsObserver) {
         observer.latestPostsFound(postRepository.find())
     }
 }

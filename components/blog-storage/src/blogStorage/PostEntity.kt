@@ -10,5 +10,3 @@ data class PostEntity(
         val title: String = "",
         val body: String = ""
 )
-
-

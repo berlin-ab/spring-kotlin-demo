@@ -41,4 +41,6 @@ dependencies {
     compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
 
     compile(project(":components/blog"))
+    
+    testCompile("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
 }

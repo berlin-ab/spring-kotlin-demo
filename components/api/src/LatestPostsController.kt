@@ -8,17 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.context.request.async.DeferredResult
 
-class Response : DeferredResult<ResponseEntity<Any>>()
+typealias Response = DeferredResult<ResponseEntity<Any>>
 
 @RestController class LatestPostsController(private val latestPosts: LatestPosts) {
-
-    @GetMapping("/latest-posts")
-    fun get(): Response {
-        return Response().also {
-            latestPosts.fetch(LatestPostsApiObserver(it))
-        }
+    @GetMapping("/latest-posts") fun get() = Response().also {
+        latestPosts.fetch(LatestPostsApiObserver(it))
     }
-
 }
 
 class LatestPostsApiObserver(private val result: Response) : LatestPostsObserver {
