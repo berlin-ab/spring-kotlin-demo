@@ -23,6 +23,10 @@ class RealCheckout : Checkout {
     }
 
     override fun total(): Int {
+        if (items.isEmpty()) {
+            return 0
+        }
+
         return items.map {
             getCost(it)
         }.reduce { acc, i ->

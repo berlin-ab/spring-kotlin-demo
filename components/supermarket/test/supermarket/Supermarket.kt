@@ -34,6 +34,10 @@ class SupermarketSpec : Spek({
             checkout.add("apple")
             assertThat(checkout.total(), equalTo(13))
         }
+
+        it("returns a total of zero for an empty checkout") {
+            assertThat(checkout.total(), equalTo(0))
+        }
     }
 })
 
