@@ -5,13 +5,15 @@ import blog.BlogApp
 import blogStorage.BlogStorageApp
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import supermarket.CheckoutApp
 
 @SpringBootApplication(
         scanBasePackageClasses = arrayOf(
                 DemoApplication::class,
                 ApiApp::class,
                 BlogApp::class,
-                BlogStorageApp::class
+                BlogStorageApp::class,
+                CheckoutApp::class
         )
 )
 class DemoApplication

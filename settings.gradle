@@ -3,5 +3,6 @@ include 'components/api'
 include 'components/interesting'
 include 'components/blog-storage'
 include 'components/blog-storage-contract'
+include 'components/supermarket'
 
 include 'containers/spring-boot-web-app'
