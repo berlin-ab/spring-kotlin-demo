@@ -15,25 +15,31 @@ Please leave a Github issue.
 
 Components are defined in `components` and executables are defined in `containers`. Gradle ties them all together via Multi-Project builds (https://docs.gradle.org/3.3/userguide/multi_project_builds.html).
 
-1. Define a project in settings.gradle
+1. Make a `settings.gradle` file:
+
+```bash
+touch settings.gradle
+```
+
+2. Define a new project in the root `settings.gradle` file:
 
 ```groovy
 include 'components/blog'
 ```
 
-2. Make a directory matching the above:
+3. Make a directory matching the above:
 
 ```bash
 mkdir -p components/blog
 ```
 
-3. drop a `build.gradle` file into the `components/blog` directory.
+4. drop a `build.gradle` file into the `components/blog` directory.
 
 ```bash
 touch components/blog/build.gradle
 ```
 
-4. Include `components/blog` code into other projects:
+5. Include `components/blog` code into other projects:
 
 ```groovy
 dependencies {
