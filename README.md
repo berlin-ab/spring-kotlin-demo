@@ -17,25 +17,25 @@ Components are defined in `components` and executables are defined in `container
 
 1. Define a project in settings.gradle
 
-groovy```
+```groovy
 include 'components/blog'
 ```
 
 2. Make a directory matching the above:
 
-bash```
+```bash
 mkdir -p components/blog
 ```
 
 3. drop a `build.gradle` file into the `components/blog` directory.
 
-bash```
+```bash
 touch components/blog/build.gradle
 ```
 
 4. Include `components/blog` code into other projects:
 
-groovy```
+```groovy
 dependencies {
     compile(project(":components/blog"))
 }
