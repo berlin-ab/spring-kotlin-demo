@@ -2,6 +2,6 @@ package blog
 
 
 data class Post(
-        val title: String,
-        val body: String
+        val title: String = "",
+        val body: String = ""
 )
