@@ -1,6 +1,7 @@
 package blogStorageContract
 
 import blog.Post
+import blog.PostModel
 import blog.PostRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
@@ -18,10 +19,10 @@ abstract class PostRepositoryContract {
 
     @Test
     fun itStoresBlogs() {
-        repository.save(Post(title = "Foo", body = "Bar"))
+        repository.save(PostModel(title = "Foo", body = "Bar"))
         val posts = repository.find()
 
-        assertThat(posts).isEqualTo(listOf(Post(title = "Foo", body = "Bar")))
+        assertThat(posts).isEqualTo(listOf(PostModel(title = "Foo", body = "Bar")))
     }
 
 }

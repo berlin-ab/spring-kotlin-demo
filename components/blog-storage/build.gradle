@@ -9,11 +9,13 @@ buildscript {
     }
 
     dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion"
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
     }
 }
 
 apply plugin: 'kotlin'
+apply plugin: "kotlin-jpa"
 
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8

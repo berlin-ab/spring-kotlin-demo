@@ -1,6 +1,7 @@
 package blogStorage
 
 import blog.Post
+import blog.PostModel
 import blog.PostRepository
 import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -23,7 +24,7 @@ class DatabasePostRepository(private val postJpaRepository: PostJpaRepository) :
 
     override fun find(): List<Post> {
         return postJpaRepository.findAll().map {
-            mapper.convertValue(it, Post::class.java)
+            mapper.convertValue(it, PostModel::class.java)
         }
     }
 }

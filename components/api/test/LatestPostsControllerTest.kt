@@ -1,6 +1,7 @@
 package api
 
 import blog.Post
+import blog.PostModel
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -19,7 +20,7 @@ class LatestPostsControllerTest {
     fun setUp() {
         latestPosts.stub(
                 listOf(
-                        Post(
+                        PostModel(
                                 title = "foo",
                                 body = "bar"
                         )
